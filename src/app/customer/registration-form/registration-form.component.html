@@ -1,0 +1,37 @@
+<mat-card class="login" fxLayout="column" fxLayoutAlign="center center">
+	<mat-toolbar class="app-name" fxLayoutAlign="center center">
+		<span>Personal Details</span>
+  </mat-toolbar>
+  <form fxLayout="column" fxLayoutAlign="center" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <mat-radio-group formControlName="gender">
+        <mat-radio-button value="male" >Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field>
+      <input matInput type="text" placeholder="First Name" formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Last Name" formControlName="lastName">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput
+                [matDatepicker]="picker"
+                placeholder="Date of Birth"
+                formControlName="dob"
+                >
+        <mat-datepicker-toggle matSuffix
+                                [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+            <input matInput type="text" placeholder="Nationaliy" formControlName="nationality">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">Continue</button>
+  </form>
+
+  <!--<p>Form Value in JSON: {{ profileForm.value | json }}</p>-->
+  
+  <p>Form Status: {{ profileForm.status }}</p>
+</mat-card>
+  
+  
